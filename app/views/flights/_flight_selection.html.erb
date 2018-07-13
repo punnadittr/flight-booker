@@ -1,0 +1,27 @@
+<%= form_tag('bookings/new', method: :get) do %>
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table">
+      <%= render 'table_head'%>
+      <tbody>
+        <% @flights.each do |f| %>
+          <div class="radio">
+            <tr>
+              <td><%= radio_button_tag(:flight_id, f.id, :checked) %></td>
+              <th scope="row"><%= f.id %></th>
+              <td><%= f.from_airport.name %></td>
+              <td><%= f.to_airport.name %></td>
+              <td><%= f.travel_date %></td>  
+              <td><%= f.time.to_formatted_s(:time) %></td>
+              <td><%= distance_of_time_in_words(f.duration) %></td>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
+    <%= hidden_field_tag :tickets, params[:tickets] %>
+  <%= submit_tag("Book", class: 'form-control btn-success') %>
+  </div>
+<% end %>    
+
+
+  
+  

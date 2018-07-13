@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1> Flight Information </h1>
+    <table class="table">
+      <%= render 'table_head'%>
+      <tbody>
+        <div class="radio">
+          <tr>
+            <th scope="row"><%= @selected_flight.id %></th>
+            <td><%= @selected_flight.from_airport.name %></td>
+            <td><%= @selected_flight.to_airport.name %></td>
+            <td><%= @selected_flight.travel_date %></td>  
+            <td><%= @selected_flight.time.to_formatted_s(:time) %></td>
+            <td><%= distance_of_time_in_words(@selected_flight.duration) %></td>
+            <td><%= @tickets %>
+        </div>
+      </tbody>
+    </table>
+    <%= hidden_field_tag :tickets, params[:tickets] %>
+  </div>
+
+ <div class="col-md-6 col-md-offset-3">
+  <%= form_for @booking, url: bookings_create_path do |f| %>
+
+    <%= f.hidden_field(:flight_id, :value => params[:flight_id]) %>
+    <%= f.hidden_field(:tickets, :value => params[:tickets]) %>
+
+    <% @passenger_numbers.times do |i| %>
+      <%= f.fields_for :passengers do |passenger| %>
+        <h3>Passenger <%= i+1 %></h3>
+        <%= passenger.label :name %>
+        <%= passenger.text_field :name, class: 'form-control' %>
+
+        <%= passenger.label :email %>
+        <%= passenger.email_field :email, class: 'form-control' %>
+        <hr>
+      <% end %>
+    <% end %>
+    <%= f.submit 'Create Booking', class: "btn btn-primary" %>
+  <% end %>
+</div>

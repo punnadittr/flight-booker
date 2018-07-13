@@ -1,0 +1,13 @@
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+<h1>
+  Search Flights
+</h1>
+</div>
+  <%= render 'flight_dropdowns' %>
+  <% unless @flights.nil? %>
+    <% unless @flights.count == 0 %>
+      <%= render 'flight_selection'%>
+    <% end %>
+  <% end %>
+</div>

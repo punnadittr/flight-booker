@@ -1,0 +1,45 @@
+<div class="col-md-6 col-md-offset-3 booking-info">
+  <h1> Booking Information </h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Flight #</th>
+          <th scope="col">From</th>
+          <th scope="col">To</th>
+          <th scope="col">Travel Date</th>
+          <th scope="col">Travel Time</th>
+          <th scope="col">Passengers</th>
+        </tr>
+    </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= @booking.flight.id %></th>
+          <td><%= @booking.flight.from_airport.name %></td>
+          <td><%= @booking.flight.to_airport.name %></td>
+          <td><%= @booking.flight.travel_date %></td>  
+          <td><%= @booking.flight.time.to_formatted_s(:time) %></td>
+          <td><%= @booking.tickets %>
+      </tbody>
+    </table>
+  <h2> Passenger Information </h3>
+      <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Passenger No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+        </tr>
+    </thead>
+      <tbody>
+        <div class="radio">
+        <% @booking.passengers.each_with_index do |p,i| %>
+          <tr>
+            <th scope="row"><%= i+1 %></th>
+            <td><%= p.name %></td>
+            <td><%= p.email %></td>
+          </tr>
+        <% end %>
+        </div>
+      </tbody>
+    </table>
+</div>

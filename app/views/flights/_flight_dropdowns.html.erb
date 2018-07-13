@@ -1,0 +1,18 @@
+<div class="form-group">
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_tag("/search", method: "get") do %>
+    <h4>From:</h4>
+    <%= select_tag(:from_airport, options_for_select(@airport_options), class: 'form-control') %>
+    <h4>To:</h4>
+    <%= select_tag(:to_airport, options_for_select(@airport_options), class: 'form-control') %>
+    <h4>How many people?</h4>
+    <%= select_tag(:tickets, options_for_select([[1,1],[2,2],[3,3],[4,4]]), class: 'form-control') %>
+    <h4>Travelling Date:</h4>
+    <%= collection_select(Flight, 
+                        :travel_date, 
+                        Flight.unique_by_travel_date.order("travel_date"), 
+                        :travel_date, :travel_date, {}, {class: 'form-control'}) %>
+    <%= submit_tag("Search", class: 'form-control btn-primary') %>
+  <%end %>
+  </div>
+</div>
