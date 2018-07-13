@@ -11,7 +11,7 @@
     <%= collection_select(Flight, 
                         :travel_date, 
                         Flight.unique_by_travel_date.order("travel_date"), 
-                        :travel_date, :travel_date, {}, {class: 'form-control'}) %>
+                        :travel_date, :travel_date_formatted , {}, {class: 'form-control'}) %>
     <%= submit_tag("Search", class: 'form-control btn-primary') %>
   <%end %>
   </div>

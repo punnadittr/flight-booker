@@ -10,7 +10,7 @@ module FlightsHelper
       to_airport_id != from_airport_id', 
       params[:to_airport], 
       params[:from_airport],
-      params[:Flight][:travel_date])
+      params[:Flight][:travel_date].to_date)
   end
 
   def no_flights

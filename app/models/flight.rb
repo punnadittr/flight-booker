@@ -6,6 +6,6 @@ class Flight < ApplicationRecord
   has_many :bookings
 
   def travel_date_formatted
-    travel_date.strftime("%m/%d/%Y")
+    travel_date.strftime("%d/%m/%Y")
   end
 end
