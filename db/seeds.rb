@@ -17,7 +17,7 @@ end
 1000.times do
   Flight.create!(to_airport_id: Airport.ids.sample, 
     from_airport_id: Airport.ids.sample, 
-    travel_date: Faker::Date.between(Time.now, 10.days.from_now).to_date, 
+    travel_date: Faker::Date.between(Time.now, 10.days.from_now), 
     duration: Faker::Number.between(10800, 36000),
     time: Faker::Time.between(1.day.ago, Time.now))
 end
