@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Thank you for booking with us, <%= @passenger.name %></h2>
+    <p>
+      Your booking is now ready,
+      your booking id is: <%= @passenger.booking.id %>.<br>
+    </p>
+    <p>
+      See your booking details at <%= booking_url(@booking) %></td>.
+    </p>
+    <p>Have a great day!</p>
+  </body>
+</html>

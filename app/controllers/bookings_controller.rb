@@ -11,6 +11,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       redirect_to @booking
+      @booking.passengers.each do |p|
+        p.send_thankyou_email
+      end
     else
       flash[:danger] = 'Please enter valid information and try again'
       redirect_to root_path  
