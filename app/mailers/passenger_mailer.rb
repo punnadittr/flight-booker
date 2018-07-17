@@ -1,5 +1,5 @@
 class PassengerMailer < ApplicationMailer
-  default from: 'noreply@xcvdsvsdf.com'
+  default from: 'noreply@ptflight_booker.com'
 
   def thankyou_email(passenger)
     @passenger = passenger

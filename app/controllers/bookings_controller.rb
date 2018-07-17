@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
       @booking.passengers.each do |p|
         p.send_thankyou_email
       end
+      flash[:success] = "Booking Info is sent to your Email"
     else
       flash[:danger] = 'Please enter valid information and try again'
       redirect_to root_path  
